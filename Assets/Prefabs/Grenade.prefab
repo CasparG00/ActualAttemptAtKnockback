@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd952e14a884bb4bb7f1ccc536b83cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  radius: 5
   power: 3000
-  playerCol: {fileID: 5239799315385477903, guid: ad002cf73e09d3b47ad793b7b93211f3, type: 3}
+  verticalForce: 2

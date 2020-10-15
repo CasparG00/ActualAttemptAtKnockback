@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float fireRate;
+    public float fireRate = 1;
     public float bulletVelocity = 10;
     
     public Transform cam;
@@ -16,10 +16,13 @@ public class Shooting : MonoBehaviour
     private void Update()
     {
         if (!_canShoot || !Input.GetMouseButtonDown(0)) return;
+        
         var grenadeInstance = Instantiate(grenade, barrel.position, Quaternion.identity);
         var grenadeRb = grenadeInstance.GetComponent<Rigidbody>();
+        
         Physics.IgnoreCollision(GetComponent<Collider>(), grenadeRb.GetComponent<Collider>());
         grenadeRb.AddForce(cam.forward * bulletVelocity, ForceMode.Impulse);
+        
         StartCoroutine(ShotDelay());
     }
 
