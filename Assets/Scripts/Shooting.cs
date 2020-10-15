@@ -3,25 +3,23 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float damage = 50;
-    public float knockbackStrength;
     public float fireRate;
+    public float bulletVelocity = 10;
+    
     public Transform cam;
-
-    private Rigidbody _rb;
+    public Transform barrel;
+    public GameObject grenade;
 
     private bool _canShoot = true;
     private bool _pressedShoot;
 
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-
     private void Update()
     {
         if (!_canShoot || !Input.GetMouseButtonDown(0)) return;
-        _rb.AddForce(-cam.forward * (knockbackStrength), ForceMode.Impulse);
+        var grenadeInstance = Instantiate(grenade, barrel.position, Quaternion.identity);
+        var grenadeRb = grenadeInstance.GetComponent<Rigidbody>();
+        Physics.IgnoreCollision(GetComponent<Collider>(), grenadeRb.GetComponent<Collider>());
+        grenadeRb.AddForce(cam.forward * bulletVelocity, ForceMode.Impulse);
         StartCoroutine(ShotDelay());
     }
 
