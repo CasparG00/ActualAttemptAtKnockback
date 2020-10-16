@@ -1,22 +1,30 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement Settings")] 
     public float speed = 4500;
     public float maxSpeed = 20;
     public float counterMovement = 0.175f;
     public float airSpeedMultiplier = 0.5f;
 
+    [Space]
     public Transform orientation;
     public CapsuleCollider col;
 
-    [Header("Camera Settings")] public Transform cam;
+    [Header("Camera Settings")]
+    public Transform cam;
     public float sensitivity;
 
     public bool lockCursor;
+
+    [Header("Camera Impact Settings")]
+    public AnimationCurve impactShake;
+    public float camOffsetY = 1;
 
     private Rigidbody _rb;
 
@@ -123,5 +131,12 @@ public class PlayerMovement : MonoBehaviour
 
         cam.transform.localRotation = Quaternion.Euler(_cameraX, _cameraY, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, _cameraY, 0);
+    }
+
+    private void OnCollisionEnter()
+    {
+        if (_rb.velocity.y != 0) return;
+        var targetPos = new Vector3(0, -camOffsetY, 0);
+        StartCoroutine(cam.GetComponent<CameraMovement>().Impact(Vector3.zero, targetPos, .25f, impactShake));
     }
 }

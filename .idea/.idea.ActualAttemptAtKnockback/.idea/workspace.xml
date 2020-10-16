@@ -20,11 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14cf3b4e-71a9-4b4c-b122-85e7807a5cff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Pellet.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Pellet.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Shake Transform Event.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Shake Transform Event.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CameraShakeEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pellet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pellet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShakeTransform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Grenade.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grenade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grenade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,27 +48,38 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pellet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraShakeEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ShakeTransform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/2f/23feae5f/Component.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovementOld.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Grenade.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Grenade.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/pellet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pellet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraShakeEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ShakeTransform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1iltXURZwqb3mGNvvpJLp94DLZD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -105,6 +129,8 @@
       <workItem from="1602573335405" duration="4285000" />
       <workItem from="1602667027735" duration="5490000" />
       <workItem from="1602772224144" duration="6623000" />
+      <workItem from="1602833740942" duration="6059000" />
+      <workItem from="1602846515020" duration="7113000" />
     </task>
     <servers />
   </component>
@@ -123,8 +149,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -140,5 +168,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/1920.0.1920.1160/0.0.1920.1040@0.0.1920.1040" timestamp="1602577196967" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602848766088">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1160/0.0.1920.1040@0.0.1920.1040" timestamp="1602848766088" />
   </component>
 </project>
