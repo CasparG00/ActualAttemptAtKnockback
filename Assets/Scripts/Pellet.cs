@@ -12,7 +12,7 @@ public class Pellet : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _origin) >= 10)
+        if (Vector3.Distance(transform.position, _origin) >= maxDistance)
         {
             Destroy(gameObject);
         }

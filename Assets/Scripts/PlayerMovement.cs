@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -22,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool lockCursor;
 
-    [Header("Camera Impact Settings")]
+    [Header("Camera Effects Settings")]
     public AnimationCurve impactShake;
     public float camOffsetY = 1;
 
@@ -137,6 +136,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_rb.velocity.y != 0) return;
         var targetPos = new Vector3(0, -camOffsetY, 0);
-        StartCoroutine(cam.GetComponent<CameraMovement>().Impact(Vector3.zero, targetPos, .25f, impactShake));
+        StartCoroutine(cam.GetComponent<CameraMovement>().SmoothTranslate(Vector3.zero, targetPos, .25f, impactShake));
     }
 }

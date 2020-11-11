@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour {
     public CameraShakeEvent data;
     [Space]
     public float maxShake = 3f;
-    
+
     private float _fallTime;
 
     private void Update() {
@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour {
         }
     }
     
-    public IEnumerator Impact(Vector3 origin, Vector3 target, float duration, AnimationCurve curve)
+    public IEnumerator SmoothTranslate(Vector3 origin, Vector3 target, float duration, AnimationCurve curve)
     {
         var journey = 0f;
         while (journey <= duration)
