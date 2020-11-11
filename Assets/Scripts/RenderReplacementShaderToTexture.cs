@@ -24,7 +24,7 @@ public class RenderReplacementShaderToTexture : MonoBehaviour
     string targetTexture = "_RenderTexture";
 
     private RenderTexture renderTexture;
-    private new Camera camera;
+    private Camera camera;
 
     private void Start()
     {

@@ -19,55 +19,36 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14cf3b4e-71a9-4b4c-b122-85e7807a5cff" name="Default Changelist" comment="cock">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Environment.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Environment.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Environment.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/doubleBarrel.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/doubleBarrel.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/doubleBarrelFull.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/doubleBarrelFull.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/cube.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/cube.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessing.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessing/CameraShakeEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessing/CameraShakeEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessing/ShakeTransform.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessing/ShakeTransform.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/HiddenNormalsTexture.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/HiddenNormalsTexture.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/Outline.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/Outline.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/OutlinePostProfile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/OutlinePostProfile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/PostProcessOutline.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/PostProcessOutline.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs.meta" afterDir="false" />
+    <list default="true" id="14cf3b4e-71a9-4b4c-b122-85e7807a5cff" name="Default Changelist" comment="co">
+      <change afterPath="$PROJECT_DIR$/Assets/Outline.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Outline.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OutlinePostProfile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OutlinePostProfile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PostProcessOutline.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PostProcessOutline.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/RenderReplacementShaderToTexture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/RenderReplacementShaderToTexture.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/HiddenNormalsTexture.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/HiddenNormalsTexture.shader.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/TestTextures.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/TestTextures.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Grenade.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Grenade.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pellet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pellet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraShakeEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grenade.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grenade.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pellet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pellet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShakeTransform.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/GlobalPostProcessing.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/GlobalPostProcessing.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/HiddenNormalsTexture.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/HiddenNormalsTexture.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/Outline.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/Outline.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/OutlinePostProfile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/OutlinePostProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/PostProcessOutline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/PostProcessOutline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +60,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pellet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.3.0/PostProcessing/Runtime/Utils/PropertySheetFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RenderReplacementShaderToTexture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/2f/23feae5f/Component.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -104,7 +86,10 @@
         <option value="$PROJECT_DIR$/Assets/Materials/Environment.shader" />
         <option value="$PROJECT_DIR$/Assets/Shaders/PostProcessOutline.cs" />
         <option value="$PROJECT_DIR$/Assets/Shaders/Outline.shader" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/OutlineShader/Outline.shader" />
         <option value="$PROJECT_DIR$/Assets/Shaders/OutlineShader/RenderReplacementShaderToTexture.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/OutlineShader/PostProcessOutline.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RenderReplacementShaderToTexture.cs" />
       </list>
     </option>
   </component>
@@ -176,7 +161,8 @@
       <workItem from="1605040747791" duration="9145000" />
       <workItem from="1605049999739" duration="14000" />
       <workItem from="1605091556230" duration="1786000" />
-      <workItem from="1605121494371" duration="765000" />
+      <workItem from="1605121494371" duration="848000" />
+      <workItem from="1605127316064" duration="2507000" />
     </task>
     <task id="LOCAL-00001" summary="cock">
       <created>1602855003427</created>
@@ -185,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602855003427</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="co">
+      <created>1605122327766</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605122327766</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +202,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="cock" />
-    <option name="LAST_COMMIT_MESSAGE" value="cock" />
+    <MESSAGE value="co" />
+    <option name="LAST_COMMIT_MESSAGE" value="co" />
   </component>
   <component name="WindowStateProjectService">
     <state x="784" y="422" key="Github.CreateGistDialog" timestamp="1602576749718">
@@ -220,10 +214,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/1920.0.1920.1160/0.0.1920.1040@0.0.1920.1040" timestamp="1605034075734" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602855016592">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605122332403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1160/0.0.1920.1040@0.0.1920.1040" timestamp="1602855016592" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1160/0.0.1920.1040@0.0.1920.1040" timestamp="1605122332403" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605098552209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
