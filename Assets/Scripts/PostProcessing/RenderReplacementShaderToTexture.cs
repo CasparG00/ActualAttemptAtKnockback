@@ -2,29 +2,20 @@
 
 public class RenderReplacementShaderToTexture : MonoBehaviour
 {
-    [SerializeField]
-    Shader replacementShader;
+    public Shader replacementShader;
 
-    [SerializeField]
-    RenderTextureFormat renderTextureFormat = RenderTextureFormat.ARGB32;
+    public RenderTextureFormat renderTextureFormat = RenderTextureFormat.ARGB32;
+    public FilterMode filterMode = FilterMode.Point;
+    public CameraClearFlags cameraClearFlags = CameraClearFlags.Color;
 
-    [SerializeField]
-    FilterMode filterMode = FilterMode.Point;
+    public Color background = Color.black;
 
-    [SerializeField]
-    int renderTextureDepth = 24;
+    public int renderTextureDepth = 24;
 
-    [SerializeField]
-    CameraClearFlags cameraClearFlags = CameraClearFlags.Color;
-
-    [SerializeField]
-    Color background = Color.black;
-
-    [SerializeField]
-    string targetTexture = "_RenderTexture";
+    public string targetTexture = "_RenderTexture";
 
     private RenderTexture renderTexture;
-    private Camera camera;
+    private new Camera camera;
 
     private void Start()
     {
@@ -35,13 +26,11 @@ public class RenderReplacementShaderToTexture : MonoBehaviour
 
         Camera thisCamera = GetComponent<Camera>();
 
-        // Create a render texture matching the main camera's current dimensions.
         renderTexture = new RenderTexture(thisCamera.pixelWidth, thisCamera.pixelHeight, renderTextureDepth, renderTextureFormat);
         renderTexture.filterMode = filterMode;
-        // Surface the render texture as a global variable, available to all shaders.
+
         Shader.SetGlobalTexture(targetTexture, renderTexture);
 
-        // Setup a copy of the camera to render the scene using the normals shader.
         GameObject copy = new GameObject("Camera" + targetTexture);
         camera = copy.AddComponent<Camera>();
         camera.CopyFrom(thisCamera);

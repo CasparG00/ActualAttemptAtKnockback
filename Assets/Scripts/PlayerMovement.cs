@@ -3,6 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")] 
@@ -36,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
+
+        GetComponent<MeshRenderer>().enabled = false;
+
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
