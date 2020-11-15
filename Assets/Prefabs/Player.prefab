@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5239799315385477904}
   - component: {fileID: 5239799315385477907}
   - component: {fileID: 5239799315385477902}
+  - component: {fileID: 241590678461458013}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -131,10 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   maxSpeed: 25
-  counterMovement: 0.2
+  counterMovement: 0.3
   airSpeedMultiplier: 0.5
-  orientation: {fileID: 5239799315532885735}
-  col: {fileID: 5239799315385477906}
+  orientation: {fileID: 0}
+  col: {fileID: 0}
   cam: {fileID: 0}
   sensitivity: 100
   lockCursor: 1
@@ -152,8 +153,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 2
   bulletVelocity: 60
+  knockbackStrength: 10
+  pelletCount: 12
   cam: {fileID: 0}
-  grenade: {fileID: 714057711919263895, guid: 0579324cf3f028a4e882054e897e1bc6, type: 3}
+  barrel: {fileID: 0}
+  pellet: {fileID: 0}
+  weapon: {fileID: 0}
+  weaponKnockbackAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  weaponKnockbackAnimationStrength: 2
+--- !u!114 &241590678461458013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239799315385477905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae43d97c9598814cb90ce939e6fcba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5239799315532885732
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,11 @@
 
 public class FallGuard : MonoBehaviour
 {
-    public Vector3 respawnPoint = new Vector3(0, 2, 0);
 
-    public float maxFallDistance = -200;
-
+    public float fallLimit = -200;
+    
     private Rigidbody _rb;
+    private Transform _spawnPoint;
 
     private void Start()
     {
@@ -15,10 +15,8 @@ public class FallGuard : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y <= -200)
-        {
-            transform.position = respawnPoint;
-            _rb.velocity = Vector3.zero;
-        }
+        if (!(transform.position.y <= fallLimit)) return;
+        transform.position = _spawnPoint.position;
+        _rb.velocity = Vector3.zero;
     }
 }

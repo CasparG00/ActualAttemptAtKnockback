@@ -6,25 +6,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement Settings")] 
-    public float speed = 4500;
+    [Header("Movement Settings")] public float speed = 4500;
     public float maxSpeed = 20;
     public float counterMovement = 0.175f;
     public float airSpeedMultiplier = 0.5f;
 
-    [Space]
-    public Transform orientation;
-    public CapsuleCollider col;
+    [Space] public Transform orientation;
+    private CapsuleCollider _col;
 
-    [Header("Camera Settings")]
-    public Transform cam;
+    [Header("Camera Settings")] public Transform cam;
     public float sensitivity;
 
     public bool lockCursor;
-
-    [Header("Camera Effects Settings")]
-    public AnimationCurve impactShake;
-    public float camOffsetY = 1;
 
     private Rigidbody _rb;
 
@@ -37,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
+        
+        _col = GetComponent<CapsuleCollider>();
 
         GetComponent<MeshRenderer>().enabled = false;
 
@@ -84,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     //Check if player is on ground
     private bool CheckGround()
     {
-        return Physics.Raycast(_rb.position, Vector3.down, col.height);
+        return Physics.Raycast(_rb.position, Vector3.down, _col.height);
     }
 
     private float _actualSpeed;
@@ -98,8 +93,8 @@ public class PlayerMovement : MonoBehaviour
         if (inputAxis < 0 && magDir < -_actualSpeed) inputAxis = 0;
 
         if (Math.Abs(magDir) > Threshold && Math.Abs(inputAxis) < 0.05f ||
-                magDir < -Threshold && inputAxis > 0 ||
-                magDir > Threshold && inputAxis < 0)
+            magDir < -Threshold && inputAxis > 0 ||
+            magDir > Threshold && inputAxis < 0)
         {
             _rb.AddForce(dir * (speed * -magDir * counterMovement));
         }
@@ -134,12 +129,5 @@ public class PlayerMovement : MonoBehaviour
 
         cam.transform.localRotation = Quaternion.Euler(_cameraX, _cameraY, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, _cameraY, 0);
-    }
-
-    private void OnCollisionEnter()
-    {
-        if (_rb.velocity.y != 0) return;
-        var targetPos = new Vector3(0, -camOffsetY, 0);
-        StartCoroutine(cam.GetComponent<CameraMovement>().SmoothTranslate(Vector3.zero, targetPos, .25f, impactShake));
     }
 }

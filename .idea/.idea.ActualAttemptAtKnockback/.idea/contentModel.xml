@@ -7,24 +7,31 @@
       <e p="ActualAttemptAtKnockback.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Materials" t="Include">
-          <e p="Environment.shader" t="Include" />
-        </e>
-        <e p="Outline.shader" t="Include" />
-        <e p="PostProcessOutline.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="CameraMovement.cs" t="Include" />
+          <e p="FallGuard.cs" t="Include" />
           <e p="pellet.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PostProcessing" t="Include">
             <e p="CameraShakeEvent.cs" t="Include" />
+            <e p="PostProcessOutline.cs" t="Include" />
+            <e p="RenderReplacementShaderToTexture.cs" t="Include" />
             <e p="ShakeTransform.cs" t="Include" />
+            <e p="SpeedLines.cs" t="Include" />
+            <e p="SpeedLinesInitializer.cs" t="Include" />
           </e>
-          <e p="RenderReplacementShaderToTexture.cs" t="Include" />
           <e p="Shooting.cs" t="Include" />
+          <e p="SpawnIslands.cs" t="Include" />
+          <e p="SpawnPointDestroyer.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
-          <e p="HiddenNormalsTexture.shader" t="Include" />
+          <e p="Fog.shader" t="Include" />
+          <e p="HeightFog.shader" t="Include" />
+          <e p="Outline Shader" t="Include">
+            <e p="HiddenNormalsTexture.shader" t="Include" />
+            <e p="Outline.shader" t="Include" />
+          </e>
+          <e p="SkyboxTest.shader" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

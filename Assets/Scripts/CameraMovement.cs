@@ -36,19 +36,4 @@ public class CameraMovement : MonoBehaviour {
             _fallTime = 0;
         }
     }
-    
-    public IEnumerator SmoothTranslate(Vector3 origin, Vector3 target, float duration, AnimationCurve curve)
-    {
-        var journey = 0f;
-        while (journey <= duration)
-        {
-            journey += Time.deltaTime;
-            
-            var percent = Mathf.Clamp01(journey / duration);
-            var curvePercent = curve.Evaluate(percent);
-            transform.position += Vector3.LerpUnclamped(origin, target, curvePercent);
-    
-            yield return null;
-        }
-    }
 }
