@@ -11,7 +11,9 @@
           <e p="CameraMovement.cs" t="Include" />
           <e p="FallGuard.cs" t="Include" />
           <e p="pellet.cs" t="Include" />
+          <e p="PlayerHealth.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="PlayerStats.cs" t="Include" />
           <e p="PostProcessing" t="Include">
             <e p="CameraShakeEvent.cs" t="Include" />
             <e p="PostProcessOutline.cs" t="Include" />
@@ -22,15 +24,13 @@
           </e>
           <e p="Shooting.cs" t="Include" />
           <e p="SpawnIslands.cs" t="Include" />
-          <e p="SpawnPointDestroyer.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
-          <e p="Fog.shader" t="Include" />
-          <e p="HeightFog.shader" t="Include" />
           <e p="Outline Shader" t="Include">
             <e p="HiddenNormalsTexture.shader" t="Include" />
             <e p="Outline.shader" t="Include" />
           </e>
+          <e p="OverlayShader.shader" t="Include" />
           <e p="SkyboxTest.shader" t="Include" />
         </e>
       </e>

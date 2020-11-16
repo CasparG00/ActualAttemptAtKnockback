@@ -18,18 +18,19 @@ public class SpawnIslands : MonoBehaviour
     [HideInInspector]
     public bool generated;
 
+    [Header("Other")] 
     public Rigidbody rb;
     
-    private readonly List<GridData> _gridData = new List<GridData>();
+    private readonly List<CellData> _cells = new List<CellData>();
     private float _numberSpawned;
 
     private void Awake()
     {
-        //Lock Player Until Generation is Complete
-        rb.isKinematic = true;
+        //Make sure there cannot be more islands than there are cells
         maxIslands = Mathf.Clamp(maxIslands, 0, gridX * gridZ);
         
         SpawnGrid();
+        CreateSpawnPoint();
         UpdatePlayer();
     }
     
@@ -41,29 +42,37 @@ public class SpawnIslands : MonoBehaviour
             for (var z = 0; z < gridZ; z++)
             {
                 var spawnPos = new Vector3(x * gridSpacing, 0, z * gridSpacing) + gridOrigin;
-                var data = new GridData
+                var data = new CellData
                 {
                     Pos = spawnPos,
                     Occupied = false
                 };
-                _gridData.Add(data);
+                _cells.Add(data);
             }
         }
 
         //Spawn Islands on random cells in the grid
         while (_numberSpawned < maxIslands)
         {
-            var prefabIndex = Random.Range(0, islandPrefabs.Length);
-            var instance = _gridData[Random.Range(0, _gridData.Count)];
-            var pos = instance.Pos;
+            var cell = _cells[Random.Range(0, _cells.Count)];
 
-            if (instance.Occupied) continue; //Check if cell isn't already occupied
+            if (cell.Occupied) continue; //Check if cell isn't already occupied
+            var pos = cell.Pos;
+            var prefabIndex = Random.Range(0, islandPrefabs.Length);
+            
+            //Instantiate Island on Cell
             Instantiate(islandPrefabs[prefabIndex], pos, Quaternion.identity);
-            instance.Occupied = true;
+            cell.Occupied = true;
 
             _numberSpawned++;
         }
-        
+
+        generated = true;
+    }
+
+    private void CreateSpawnPoint()
+    {
+        //Destroy all duplicate SpawnPoints
         var spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint").ToList();
 
         for (var i = spawnPoints.Count - 1; i >= 1; i--)
@@ -71,20 +80,19 @@ public class SpawnIslands : MonoBehaviour
             Destroy(spawnPoints[i]);
             spawnPoints.Remove(spawnPoints[i]);
         }
-
-        generated = true;
     }
     
     private void UpdatePlayer()
     {
+        //Spawn the Player on the SpawnPoint as soon as the map has been generated
         if (generated)
         {
-            rb.isKinematic = false;
+            rb.position = GameObject.Find("SpawnPoint").transform.position;
         }
     }
 
-    //Store data for every grid
-    private class GridData
+    //Store data for every Cell on the Grid
+    private class CellData
     {
         public Vector3 Pos { get; set; }
         public bool Occupied { get; set; }
