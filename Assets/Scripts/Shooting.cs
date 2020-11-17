@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -13,15 +14,20 @@ public class Shooting : MonoBehaviour
     public Transform barrel;
     public GameObject pellet;
 
+    [Header("UI Settings")]
+    public Slider cooldownBar;
+
     [Header("Weapon Knockback")] 
     public Transform weapon;
     public AnimationCurve weaponKnockbackAnimationCurve;
     public float weaponKnockbackAnimationStrength = 2;
 
+    private Rigidbody _rb;
+
     private bool _canShoot = true;
     private bool _pressedShoot;
 
-    private Rigidbody _rb;
+    private float _timer;
 
     private void Start()
     {
@@ -31,6 +37,7 @@ public class Shooting : MonoBehaviour
     private void Update()
     {
         ShootWeapon();
+        UpdateUI();
     }
 
     private void ShootWeapon()
@@ -65,6 +72,19 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         
         _canShoot = true;
+    }
+
+    private void UpdateUI()
+    {
+        if (!_canShoot)
+        {
+            _timer += Time.deltaTime;
+
+            print(_timer);
+        } else
+        {
+            _timer = 0;
+        }
     }
     
     private IEnumerator WeaponKnockback(Vector3 origin, Vector3 target, float duration, AnimationCurve curve)
