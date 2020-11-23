@@ -4,40 +4,52 @@ using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
-    public float fireRate = 1;
-    public float bulletVelocity = 10;
+    [Header("Base Shooting Settings")]
     public float knockbackStrength = 10;
+    public float fireRate = 1;
 
-    public float pelletCount = 12;
-    
+    [Space]
     public Transform cam;
     public Transform barrel;
-    public GameObject pellet;
+    
+    private Rigidbody _rb;
+    private float _timer;
+    private bool _canShoot = true;
+
+    [Header("Pellet Settings")]
+    public float pelletCount = 12;
+    public float pelletSpread = 0.05f;
+
+    public float maxRange = 50;
 
     [Header("UI Settings")]
-    public Slider cooldownBar;
+    public GameObject cooldownBar;
 
-    [Header("Weapon Knockback")] 
+    public float fadeTime = 0.2f;
+
+    private Slider _coolDownBarSlider;
+    private CanvasGroup _cooldownBarGroup;
+
+    [Header("Weapon Knockback Animation")] 
+    public float weaponKnockbackAnimationStrength = 2;
+    [Space]
     public Transform weapon;
     public AnimationCurve weaponKnockbackAnimationCurve;
-    public float weaponKnockbackAnimationStrength = 2;
-
-    private Rigidbody _rb;
-
-    private bool _canShoot = true;
-    private bool _pressedShoot;
-
-    private float _timer;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+
+        _coolDownBarSlider = cooldownBar.GetComponent<Slider>();
+        _cooldownBarGroup = cooldownBar.GetComponent<CanvasGroup>();
+        _cooldownBarGroup.alpha = 0;
     }
 
     private void Update()
     {
         ShootWeapon();
         UpdateUI();
+        ShotDelay();
     }
 
     private void ShootWeapon()
@@ -45,48 +57,61 @@ public class Shooting : MonoBehaviour
         if (!_canShoot || !Input.GetMouseButtonDown(0)) return;
         
         _rb.AddForce(-cam.forward * knockbackStrength, ForceMode.Impulse);
+        StartCoroutine(FadeUI(_cooldownBarGroup.alpha, _canShoot ? 1 : 0));
+        _canShoot = false;
 
         for (var i = 0; i < pelletCount; i++) {
-            var instance = Instantiate(pellet, barrel.position, Quaternion.identity);
-            var instanceRb = instance.GetComponent<Rigidbody>();
-            
             var direction = cam.forward;
             var spread = Vector3.zero;
+            
             spread += cam.up * Random.Range(-1f, 1f);
             spread += cam.right * Random.Range(-1f, 1f);
             
-            direction += spread.normalized * Random.Range(0f, 0.2f);
-            instanceRb.AddForce(direction * bulletVelocity, ForceMode.Impulse);
+            direction += spread.normalized * Random.Range(0f, pelletSpread);
+            
+            if (!Physics.Raycast(transform.position, direction, out var hit, maxRange)) continue;
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                Destroy(hit.transform.gameObject);
+            }
         }
         
         var localPos = weapon.localPosition;
         var targetPos = new Vector3(0, weaponKnockbackAnimationStrength * 0.2f, -weaponKnockbackAnimationStrength);
         StartCoroutine(WeaponKnockback(localPos, localPos + targetPos, 0.5f, weaponKnockbackAnimationCurve));
-        StartCoroutine(ShotDelay());
     }
 
-    private IEnumerator ShotDelay()
-    {
-        _canShoot = false;
-
-        yield return new WaitForSeconds(fireRate);
-        
-        _canShoot = true;
-    }
-
-    private void UpdateUI()
+    private void ShotDelay()
     {
         if (!_canShoot)
         {
             _timer += Time.deltaTime;
+        }
 
-            print(_timer);
-        } else
+        if (!(_timer >= fireRate)) return;
+        StartCoroutine(FadeUI(_cooldownBarGroup.alpha, _canShoot ? 1 : 0));
+        _canShoot = true;
+        _timer = 0;
+    }
+
+    private void UpdateUI()
+    {
+        _coolDownBarSlider.value = (fireRate - _timer) / fireRate;
+    }
+
+    private IEnumerator FadeUI(float start, float end)
+    {
+        var counter = 0f;
+
+        while (counter < fadeTime)
         {
-            _timer = 0;
+            counter += Time.deltaTime;
+            _cooldownBarGroup.alpha = Mathf.Lerp(start, end, counter / fadeTime);
+
+            yield return null;
         }
     }
-    
+
     private IEnumerator WeaponKnockback(Vector3 origin, Vector3 target, float duration, AnimationCurve curve)
     {
         var journey = 0f;

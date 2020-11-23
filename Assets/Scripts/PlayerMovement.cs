@@ -6,13 +6,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement Settings")] public float speed = 4500;
-    public float maxSpeed = 20;
+    [Header("Movement Settings")] public float speed = 4500f;
+    public float maxSpeed = 20f;
     public float counterMovement = 0.175f;
     public float airSpeedMultiplier = 0.5f;
 
     [Space] public Transform orientation;
     private CapsuleCollider _col;
+
+    [Header("Edge Detection Settings")]
+    public float detectionRange = 1f;
+    public float detectionLength = 2f;
+    public float upForce = 10f;
 
     [Header("Camera Settings")] public Transform cam;
     public float sensitivity;
@@ -21,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _rb;
 
+    private float _actualSpeed;
     private float _cameraX, _cameraY;
     private const float Threshold = 0.01f;
     private float _x, _z;
@@ -41,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         MyInput();
+        EdgeDetection();
     }
 
     private void FixedUpdate()
@@ -82,8 +89,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(_rb.position, Vector3.down, _col.height);
     }
 
-    private float _actualSpeed;
-
     private void CounterMovement(float inputAxis, float magDir, Vector3 dir)
     {
         //normalize movement if player walks diagonally
@@ -114,6 +119,27 @@ public class PlayerMovement : MonoBehaviour
         var xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
 
         return new Vector2(xMag, yMag);
+    }
+
+    private void EdgeDetection()
+    {
+        if (CheckGround()) return;
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        
+        var tf = orientation.transform;
+
+        var pos = tf.position + tf.forward * detectionRange + Vector3.up * detectionLength;
+
+        Debug.DrawRay(pos, Vector3.down * detectionLength, Color.green);
+        if (Physics.Raycast(pos, Vector3.down, out var hit, detectionLength))
+        {
+            if (hit.transform.CompareTag("Ground"))
+            {
+                print("grabbed");
+                _rb.velocity = Vector3.zero;
+                _rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
+            }
+        }
     }
 
     private void Look()

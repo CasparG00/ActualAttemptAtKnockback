@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f15ed268ec012af4d8a173ff4b673364, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,7 +135,6 @@ MonoBehaviour:
   counterMovement: 0.3
   airSpeedMultiplier: 0.5
   orientation: {fileID: 0}
-  col: {fileID: 0}
   cam: {fileID: 0}
   sensitivity: 100
   lockCursor: 1
@@ -151,13 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a20190ce7626784680103ad3b16c2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 2
-  bulletVelocity: 60
   knockbackStrength: 10
-  pelletCount: 12
+  fireRate: 2
   cam: {fileID: 0}
   barrel: {fileID: 0}
-  pellet: {fileID: 0}
+  pelletCount: 12
+  pelletSpread: 0.05
+  maxRange: 50
+  cooldownBar: {fileID: 0}
+  fadeTime: 0.2
+  weaponKnockbackAnimationStrength: 2
   weapon: {fileID: 0}
   weaponKnockbackAnimationCurve:
     serializedVersion: 2
@@ -165,7 +167,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weaponKnockbackAnimationStrength: 2
 --- !u!114 &241590678461458013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae43d97c9598814cb90ce939e6fcba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleEmitter: {fileID: 0}
+  speedThreshold: 30
 --- !u!1 &5239799315532885732
 GameObject:
   m_ObjectHideFlags: 0

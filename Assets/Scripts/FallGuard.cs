@@ -13,15 +13,14 @@ public class FallGuard : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _ph = GetComponent<PlayerHealth>();
-
-        _spawnPoint = GameObject.Find("SpawnPoint").transform;
+        
     }
 
     private void Update()
     {
         if (!(transform.position.y <= fallLimit)) return;
         _ph.Damage(1);
-        transform.position = _spawnPoint.position;
+        transform.position = GameObject.Find("SpawnPoint").transform.position;
         _rb.velocity = Vector3.zero;
 
     }
