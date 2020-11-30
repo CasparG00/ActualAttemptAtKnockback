@@ -4,11 +4,16 @@ public class TurretProjectile : MonoBehaviour
 {
     public float lifetime = 10f;
     
-    private PlayerHealth _ph;
+    public CameraShakeEvent data;
 
+    
+    private PlayerStats _ps;
+    private ShakeTransform _st;
+    
     private void Start()
     {
-        _ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        _st = GameObject.Find("Camera Shake").GetComponent<ShakeTransform>();
     }
 
     private void Update()
@@ -20,7 +25,8 @@ public class TurretProjectile : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            _ph.Damage(1);
+            _ps.Damage(1);
+            _st.AddShakeEvent(data);
         }
 
         Destroy(gameObject);

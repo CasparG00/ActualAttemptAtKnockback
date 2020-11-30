@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class TurretEnemy : MonoBehaviour
@@ -7,7 +8,7 @@ public class TurretEnemy : MonoBehaviour
     private Transform _tf;
 
     private Vector3 _shootDir;
-    
+
     [Header("Detection Settings")] 
     public float maxDetectionRange = 100;
     private Transform _player;
@@ -34,8 +35,14 @@ public class TurretEnemy : MonoBehaviour
     private void Update()
     {
         DetectPlayer();
-        Shoot();
+        
+        if (!_detected) return;
         UpdateRotation();
+            
+        if (_canShoot)
+        {
+            Shoot();
+        }
     }
 
     //Check if Player is within Range and Visible to the turret
@@ -67,8 +74,6 @@ public class TurretEnemy : MonoBehaviour
     private void Shoot()
     {
         //Start Shooting when the Player is in View
-        if (!_detected ) return;
-        if (!_canShoot) return;
         var instance = Instantiate(projectile, transform.position, Quaternion.identity);
 
         instance.GetComponent<Rigidbody>().AddForce(_shootDir * projectileSpeed, ForceMode.Impulse);
@@ -92,7 +97,6 @@ public class TurretEnemy : MonoBehaviour
     //Update turret rotation when it is able to shoot
     private void UpdateRotation()
     {
-        if (!_detected) return;
         var playerPos = _player.position;
         
         _tf.LookAt(playerPos, Vector3.up);

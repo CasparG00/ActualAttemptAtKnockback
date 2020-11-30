@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8580352a48be0d04eba98701bb03cd68, type: 3}
-  m_Name: Shake Transform Event
+  m_Name: ShotShake
   m_EditorClassIdentifier: 
-  target: 0
-  amplitude: 0.5
+  target: 1
+  amplitude: 2
   frequency: 2
-  duration: 0.1
+  duration: 0.3
   blendOverLifetime:
     serializedVersion: 2
     m_Curve:
@@ -23,7 +23,7 @@ MonoBehaviour:
       time: 0
       value: 0
       inSlope: 0
-      outSlope: 12.566371
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -31,20 +31,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.2
       value: 1
+      inSlope: -0.016049657
+      outSlope: -0.016049657
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.23805231
+      outWeight: 0.034164913
+    - serializedVersion: 3
+      time: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 2.1706214
-      outSlope: 2.1706214
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.09895831
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private const float Threshold = 0.01f;
     private float _x, _z;
     private float _multiplier;
+    private bool _isGrounded;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        CheckGround();
         MyInput();
         EdgeDetection();
     }
@@ -69,14 +71,14 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         //Apply counter movement if player is grounded
-        if (CheckGround())
+        if (_isGrounded)
         {
             var mag = FindVelRelativeToLook();
             CounterMovement(_x, mag.x, orientation.transform.right);
             CounterMovement(_z, mag.y, orientation.transform.forward);
         }
 
-        _multiplier = CheckGround() ? 1f : airSpeedMultiplier;
+        _multiplier = _isGrounded ? 1f : airSpeedMultiplier;
 
         //Move player
         _rb.AddForce(orientation.transform.forward * (_z * speed * _multiplier));
@@ -84,9 +86,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Check if player is on ground
-    private bool CheckGround()
+    private void CheckGround()
     {
-        return Physics.Raycast(_rb.position, Vector3.down, _col.height);
+        _isGrounded = Physics.Raycast(_rb.position, Vector3.down, _col.height);
     }
 
     private void CounterMovement(float inputAxis, float magDir, Vector3 dir)
@@ -123,23 +125,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void EdgeDetection()
     {
-        if (CheckGround()) return;
+        if (_isGrounded) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
-        
+
         var tf = orientation.transform;
 
         var pos = tf.position + tf.forward * detectionRange + Vector3.up * detectionLength;
-
-        Debug.DrawRay(pos, Vector3.down * detectionLength, Color.green);
-        if (Physics.Raycast(pos, Vector3.down, out var hit, detectionLength))
-        {
-            if (hit.transform.CompareTag("Ground"))
-            {
-                print("grabbed");
-                _rb.velocity = Vector3.zero;
-                _rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
-            }
-        }
+        
+        if (!Physics.Raycast(pos, Vector3.down, out var hit, detectionLength)) return;
+        if (!hit.transform.CompareTag("Ground")) return;
+        
+        _rb.velocity = Vector3.zero;
+        _rb.AddForce(Vector3.up * upForce, ForceMode.Impulse);
     }
 
     private void Look()

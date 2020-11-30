@@ -5,7 +5,7 @@ public class CameraMovement : MonoBehaviour
     public Transform player;
     public Rigidbody rb;
 
-    [Header("Shake Settings")]
+    [Header("Speed Shake Settings")]
     public ShakeTransform st;
 
     public CameraShakeEvent data;

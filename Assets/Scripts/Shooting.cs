@@ -10,8 +10,8 @@ public class Shooting : MonoBehaviour
 
     [Space]
     public Transform cam;
-    public Transform barrel;
-    
+    public LayerMask layers;
+
     private Rigidbody _rb;
     private float _timer;
     private bool _canShoot = true;
@@ -30,11 +30,16 @@ public class Shooting : MonoBehaviour
     private Slider _coolDownBarSlider;
     private CanvasGroup _cooldownBarGroup;
 
-    [Header("Weapon Knockback Animation")] 
+    [Header("Weapon Animations")] 
     public float weaponKnockbackAnimationStrength = 2;
     [Space]
     public Transform weapon;
     public AnimationCurve weaponKnockbackAnimationCurve;
+    
+    public ShakeTransform st;
+    public CameraShakeEvent data;
+
+    public ParticleSystem shotParticles;
 
     private void Start()
     {
@@ -69,8 +74,9 @@ public class Shooting : MonoBehaviour
             
             direction += spread.normalized * Random.Range(0f, pelletSpread);
             
-            if (!Physics.Raycast(transform.position, direction, out var hit, maxRange)) continue;
-            if (hit.transform.CompareTag("Enemy"))
+            Debug.DrawRay(transform.position, direction * maxRange, Color.blue, 5f);
+            if (!Physics.Raycast(transform.position, direction, out var hit, maxRange, layers)) continue;
+            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Projectile"))
             {
                 Destroy(hit.transform.gameObject);
             }
@@ -78,6 +84,9 @@ public class Shooting : MonoBehaviour
         
         var localPos = weapon.localPosition;
         var targetPos = new Vector3(0, weaponKnockbackAnimationStrength * 0.2f, -weaponKnockbackAnimationStrength);
+        
+        st.AddShakeEvent(data);
+        shotParticles.Play();
         StartCoroutine(WeaponKnockback(localPos, localPos + targetPos, 0.5f, weaponKnockbackAnimationCurve));
     }
 
