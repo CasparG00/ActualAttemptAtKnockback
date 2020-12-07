@@ -5411,7 +5411,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.848e-42, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.1597e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5939,6 +5939,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bae64baea37c741bc06b0c139f6dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1531518980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531518981}
+  - component: {fileID: 1531518983}
+  - component: {fileID: 1531518982}
+  - component: {fileID: 1531518984}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1531518981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531518980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1531518982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531518980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10234c19cccd792459f39dff3a8cfada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1825959335}
+  cam: {fileID: 455520446}
+  turretEnemy: {fileID: 741387399006297449, guid: f297e9ba4ac01004bbe41064fc7658dc, type: 3}
+  TurretSpawnRange: {x: 12, y: 16}
+  minTurretSpawnDistance: 40
+  turretSpawnTimeInterval: 10
+  currentTurretsSpawned: 0
+  laserGenerator: {fileID: 8594491923484060187, guid: cdc9176deba74624a9a96386dbb3ab3e, type: 3}
+  maxGeneratorsSpawned: 4
+  generatorSpawnTimeInterval: 5
+  currGeneratorsSpawned: 0
+  currGeneratorsOn: 0
+  laser: {fileID: 6901717485283944589, guid: 02f685e9fdb540246b23442f65746a07, type: 3}
+  laserSpawnTimeInterval: 15
+  spawnDistance: 50
+--- !u!114 &1531518983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531518980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10544babd9951c469090e0d31237e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandPrefabs:
+  - {fileID: 7598063967423727725, guid: 582ba0e8e5eff6a488226330c9caac07, type: 3}
+  maxIslands: 24
+  MinMaxHeight: {x: -20, y: 20}
+  MinMaxOffset: {x: -5, y: 5}
+  gridOrigin: {x: 0, y: 0, z: 0}
+  Grid: {x: 16, y: 16}
+  gridSpacing: 25
+  rb: {fileID: 622039524}
+--- !u!114 &1531518984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531518980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac45454b9b017b48b55dd1fd5b9ced2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerups:
+  - {fileID: 5419611561076183897, guid: 42eeaf25ef6612c43b3d9544418aeb3d, type: 3}
+  - {fileID: 8138632684682269080, guid: 68ed06fac9b1fd04395e14a59f1552a3, type: 3}
+  spawnInterval: 30
 --- !u!850595691 &1541787049
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -10871,6 +10968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  maxHealth: 3
   hasFallProtection: 1
   fallProtectionForce: 150
   fallProtectionActivator: -150
@@ -10962,59 +11060,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949731040}
   m_CullTransparentMesh: 0
---- !u!1 &2113712037
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2113712039}
-  - component: {fileID: 2113712038}
-  m_Layer: 0
-  m_Name: GridSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2113712038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113712037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a10544babd9951c469090e0d31237e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  islandPrefabs:
-  - {fileID: 7598063967423727725, guid: 582ba0e8e5eff6a488226330c9caac07, type: 3}
-  maxIslands: 24
-  gridOrigin: {x: 0, y: 0, z: 0}
-  Grid: {x: 3, y: 32}
-  gridSpacing: 30
-  turretEnemy: {fileID: 741387399006297449, guid: f297e9ba4ac01004bbe41064fc7658dc, type: 3}
-  TurretSpawnRange: {x: 12, y: 16}
-  minTurretSpawnDistance: 30
-  rb: {fileID: 622039524}
---- !u!4 &2113712039
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113712037}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5239799315553608733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11050,6 +11095,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 455520446}
+    - target: {fileID: 5239799315385477902, guid: ad002cf73e09d3b47ad793b7b93211f3, type: 3}
+      propertyPath: esm
+      value: 
+      objectReference: {fileID: 1531518982}
     - target: {fileID: 5239799315385477902, guid: ad002cf73e09d3b47ad793b7b93211f3, type: 3}
       propertyPath: data
       value: 

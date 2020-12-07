@@ -9,6 +9,9 @@ TagManager:
   - EnemySpawner
   - Ground
   - Projectile
+  - Generator
+  - PowerupSpawner
+  - Powerup
   layers:
   - Default
   - TransparentFX

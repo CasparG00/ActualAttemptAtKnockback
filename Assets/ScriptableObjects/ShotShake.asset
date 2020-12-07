@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShotShake
   m_EditorClassIdentifier: 
   target: 1
-  amplitude: 2
+  amplitude: 3
   frequency: 2
   duration: 0.3
   blendOverLifetime:
@@ -29,7 +29,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.2
+      time: 0.25
       value: 1
       inSlope: -0.016049657
       outSlope: -0.016049657

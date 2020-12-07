@@ -5,17 +5,16 @@ public class CameraMovement : MonoBehaviour
     public Transform player;
     public Rigidbody rb;
 
-    [Header("Speed Shake Settings")]
-    public ShakeTransform st;
+    [Header("Speed Shake Settings")] public ShakeTransform st;
 
     public CameraShakeEvent data;
-    [Space] 
-    public float maxShake = 3f;
+    [Space] public float maxShake = 3f;
     public float speedThreshold = 80;
-    
+
     private float _fallTime;
-    
-    private void Update() {
+
+    private void Update()
+    {
         transform.position = player.transform.position;
     }
 

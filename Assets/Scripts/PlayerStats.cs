@@ -2,12 +2,19 @@
 
 public class PlayerStats : MonoBehaviour
 {
-        public int health = 3;
+        [HideInInspector]
+        public int health;
+        public int maxHealth = 3;
 
         public bool hasFallProtection;
 
         public float fallProtectionForce = 100;
         public float fallProtectionActivator = -150;
+
+        private void Start()
+        {
+                health = maxHealth;
+        }
 
         public void Damage(int amount)
         {

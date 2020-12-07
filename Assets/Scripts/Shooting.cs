@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     [Space]
     public Transform cam;
     public LayerMask layers;
+    public EnemySpawningManager esm;
 
     private Rigidbody _rb;
     private float _timer;
@@ -74,11 +75,20 @@ public class Shooting : MonoBehaviour
             
             direction += spread.normalized * Random.Range(0f, pelletSpread);
             
-            Debug.DrawRay(transform.position, direction * maxRange, Color.blue, 5f);
             if (!Physics.Raycast(transform.position, direction, out var hit, maxRange, layers)) continue;
             if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Projectile"))
             {
                 Destroy(hit.transform.gameObject);
+                esm.FreeSpawner(hit);
+            }
+
+            if (hit.transform.CompareTag("Generator"))
+            {
+                var lg = hit.transform.GetComponent<LaserGenerator>();
+                if (lg.isOn)
+                {
+                    lg.StartCoroutine(lg.Reset());
+                }
             }
         }
         

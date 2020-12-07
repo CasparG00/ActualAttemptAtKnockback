@@ -10,11 +10,17 @@
         <e p="Scripts" t="Include">
           <e p="CameraMovement.cs" t="Include" />
           <e p="Enemies" t="Include">
+            <e p="LaserEnemy.cs" t="Include" />
+            <e p="LaserGenerator.cs" t="Include" />
             <e p="TurretEnemy.cs" t="Include" />
             <e p="turretProjectile.cs" t="Include" />
           </e>
           <e p="FallGuard.cs" t="Include" />
-          <e p="GenerateMap.cs" t="Include" />
+          <e p="GameManagers" t="Include">
+            <e p="EnemySpawningManager.cs" t="Include" />
+            <e p="GenerateMap.cs" t="Include" />
+            <e p="PowerupManager.cs" t="Include" />
+          </e>
           <e p="PlayerHealth.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
@@ -24,6 +30,7 @@
             <e p="SpeedLines.cs" t="Include" />
             <e p="SpeedLinesInitializer.cs" t="Include" />
           </e>
+          <e p="Powerups.cs" t="Include" />
           <e p="Shooting.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">

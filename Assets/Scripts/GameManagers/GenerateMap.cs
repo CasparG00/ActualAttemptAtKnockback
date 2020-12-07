@@ -8,6 +8,8 @@ public class GenerateMap : MonoBehaviour
     [Header("Island Settings")]
     public GameObject[] islandPrefabs;
     public int maxIslands = 25;
+    public Vector2Int MinMaxHeight = new Vector2Int(-10, 10);
+    public Vector2Int MinMaxOffset = new Vector2Int(-10, 10);
     
     [Header("Grid Settings")] 
     public Vector3 gridOrigin = Vector3.zero;
@@ -15,17 +17,9 @@ public class GenerateMap : MonoBehaviour
     public Vector2Int Grid = new Vector2Int(5, 5);
     [Space] public float gridSpacing;
 
-    [Header("Enemy Spawning Settings")]
-    public GameObject turretEnemy;
-    
-    [Min(0)]
-    public Vector2Int TurretSpawnRange = new Vector2Int(12, 16);
-    public float minTurretSpawnDistance = 20;
-    private readonly List<SpawnerData> _turretSpawners = new List<SpawnerData>();
-
     [Header("Other")] 
     public Rigidbody rb;
-
+    
     private readonly List<CellData> _cells = new List<CellData>();
     private int _numberOfIslandsSpawned;
     private Vector3 _spawnPoint;
@@ -37,8 +31,7 @@ public class GenerateMap : MonoBehaviour
         
         SpawnGrid();
         CreateSpawnPoint();
-        SpawnEnemies();
-        
+
         UpdatePlayer();
     }
     
@@ -65,7 +58,13 @@ public class GenerateMap : MonoBehaviour
             var cell = _cells[Random.Range(0, _cells.Count)];
 
             if (cell.Occupied) continue; //Check if cell isn't already occupied
-            var pos = cell.Pos;
+            
+            //Offset each island randomly
+            var yOffset = Random.Range(MinMaxHeight.x, MinMaxHeight.y);
+            var xOffset = Random.Range(MinMaxOffset.x, MinMaxOffset.y);
+            var zOffset = Random.Range(MinMaxOffset.x, MinMaxOffset.y);
+            
+            var pos = new Vector3(cell.Pos.x + xOffset, cell.Pos.y + yOffset, cell.Pos.z + zOffset);
             var prefabIndex = Random.Range(0, islandPrefabs.Length);
             
             //Instantiate Island on Cell
@@ -90,36 +89,6 @@ public class GenerateMap : MonoBehaviour
         _spawnPoint = spawnPoints[0].transform.position;
     }
 
-    private void SpawnEnemies()
-    {
-        var spawners = GameObject.FindGameObjectsWithTag("EnemySpawner").ToList();
-
-        //Save all Spawner Data in List
-        foreach (var spawner in spawners)
-        {
-            var spawnPos = spawner.transform.position;
-            var data = new SpawnerData()
-            {
-                Pos = spawnPos,
-                Occupied = false
-            };
-            Destroy(spawner.gameObject);
-            _turretSpawners.Add(data);
-        }
-        
-        //Spawn Turrets on free spawners and destroy empty spawners
-        var maxTurretsSpawned = Random.Range(TurretSpawnRange.x, TurretSpawnRange.y);
-        for (var i = 0; i < _turretSpawners.Count; i++)
-        {
-            var spawner = _turretSpawners[Random.Range(0, _turretSpawners.Count)];
-            if (i >= maxTurretsSpawned) continue;
-            if (spawner.Occupied || !(Vector3.Distance(spawner.Pos, _spawnPoint) > minTurretSpawnDistance))
-                continue;
-            Instantiate(turretEnemy, spawner.Pos, Quaternion.identity);
-            spawner.Occupied = true;
-        }
-    }
-    
     private void UpdatePlayer()
     {
         //Spawn the Player on the SpawnPoint as soon as the map has been generated
@@ -128,13 +97,6 @@ public class GenerateMap : MonoBehaviour
 
     //Store data for every Cell on the Grid
     private class CellData
-    {
-        public Vector3 Pos { get; set; }
-        public bool Occupied { get; set; }
-    }
-    
-    //Store data for every Spawner
-    private class SpawnerData
     {
         public Vector3 Pos { get; set; }
         public bool Occupied { get; set; }
