@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6961d723a21537043862ed9823a04cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   turret: {fileID: 741387399559921848}
   maxDetectionRange: 100
   projectile: {fileID: 2475898598309722181, guid: 49c64756a6545974e9d4b70156361c52, type: 3}
+  menuProjectile: {fileID: 2475898598309722181, guid: 5c8c2dfb8f318e0449b78875dada3f8f, type: 3}
   projectileSpeed: 100
   fireRate: 3
   weaponKnockbackAnimationStrength: 0.5

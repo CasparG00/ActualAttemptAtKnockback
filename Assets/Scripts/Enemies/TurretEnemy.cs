@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TurretEnemy : MonoBehaviour
 {
+    public State state = State.Game;
+    
     public Transform turret;
     private Transform _tf;
 
@@ -15,6 +17,7 @@ public class TurretEnemy : MonoBehaviour
 
     [Header("Shooting Settings")] 
     public GameObject projectile;
+
     public float projectileSpeed = 5;
     public float fireRate = 5;
     private bool _canShoot;
@@ -27,20 +30,39 @@ public class TurretEnemy : MonoBehaviour
     private void Start()
     {
         _tf = transform;
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
-        StartCoroutine(ShotDelay());
+        switch (state)
+        {
+            case State.Game:
+                _player = GameObject.FindGameObjectWithTag("Player").transform;
+                StartCoroutine(ShotDelay(fireRate));
+                break;
+            case State.Menu:
+                StartCoroutine(ShotDelay(menuFireRate));
+                _menuCamera = Camera.main;
+                break;
+        }
     }
 
     private void Update()
     {
-        DetectPlayer();
-        
-        if (!_detected) return;
-        UpdateRotation();
-            
-        if (_canShoot)
+        switch (state)
         {
-            Shoot();
+            case State.Game:
+                DetectPlayer();
+
+                if (!_detected) return;
+                UpdateRotation();
+
+                if (_canShoot)
+                {
+                    Shoot();
+                }
+
+                break;
+            case State.Menu:
+                Animate();
+                MenuShoot();
+                break;
         }
     }
 
@@ -73,22 +95,22 @@ public class TurretEnemy : MonoBehaviour
     private void Shoot()
     {
         //Start Shooting when the Player is in View
-        var instance = Instantiate(projectile, transform.position, Quaternion.identity);
+        var instance = Instantiate(projectile, _tf.position, Quaternion.identity);
 
         instance.GetComponent<Rigidbody>().AddForce(_shootDir * projectileSpeed, ForceMode.Impulse);
 
-        StartCoroutine(ShotDelay());
+        StartCoroutine(ShotDelay(fireRate));
         var localPos = turret.localPosition;
         var targetPos = new Vector3(0, weaponKnockbackAnimationStrength * 0.2f, -weaponKnockbackAnimationStrength);
         StartCoroutine(WeaponKnockback(localPos, localPos + targetPos, 0.5f, weaponKnockbackAnimationCurve));
     }
 
     //Limit Fire rate
-    private IEnumerator ShotDelay()
+    private IEnumerator ShotDelay(float rate)
     {
         _canShoot = false;
 
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(rate);
 
         _canShoot = true;
     }
@@ -111,12 +133,61 @@ public class TurretEnemy : MonoBehaviour
         while (journey <= duration)
         {
             journey += Time.deltaTime;
-            
+
             var percent = Mathf.Clamp01(journey / duration);
             var curvePercent = curve.Evaluate(percent);
             turret.localPosition = Vector3.LerpUnclamped(origin, target, curvePercent);
-    
+
             yield return null;
         }
+    }
+
+    #region Only for the Main Menu
+
+    [Header("Menu Settings")]
+    public GameObject menuProjectile;
+    public float menuFireRate = 1f;
+    
+    private Camera _menuCamera;
+    private Vector3 _menuTarget;
+    
+    private void Animate()
+    {
+        var ray = _menuCamera.ScreenPointToRay(Input.mousePosition);
+        var midPoint = (_tf.position - _menuCamera.transform.position).magnitude * 0.5f;
+
+        _menuTarget = ray.origin + ray.direction * midPoint;
+
+        _tf.LookAt(_menuTarget, Vector3.up);
+        var angles = _tf.eulerAngles;
+        _tf.eulerAngles = new Vector3(0, angles.y, 0);
+
+        turret.LookAt(_menuTarget, Vector3.up);
+    }
+
+    private void MenuShoot()
+    {
+        if (!Input.GetMouseButtonDown(0) || !_canShoot) return;
+        
+        var position = _tf.position;
+        var instance = Instantiate(menuProjectile, position, Quaternion.identity);
+
+        var dir = (_menuTarget - position).normalized;
+
+        instance.GetComponent<Rigidbody>().AddForce(dir * projectileSpeed, ForceMode.Impulse);
+
+        StartCoroutine(ShotDelay(menuFireRate));
+        
+        var localPos = turret.localPosition;
+        var targetPos = new Vector3(0, weaponKnockbackAnimationStrength * 0.2f, -weaponKnockbackAnimationStrength);
+        StartCoroutine(WeaponKnockback(localPos, localPos + targetPos, 0.5f, weaponKnockbackAnimationCurve));
+    }
+
+    #endregion
+
+    public enum State
+    {
+        Game,
+        Menu
     }
 }

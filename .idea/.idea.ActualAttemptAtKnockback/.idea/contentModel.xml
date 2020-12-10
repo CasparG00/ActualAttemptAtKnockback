@@ -13,6 +13,7 @@
             <e p="LaserEnemy.cs" t="Include" />
             <e p="LaserGenerator.cs" t="Include" />
             <e p="TurretEnemy.cs" t="Include" />
+            <e p="TurretMenuProjectile.cs" t="Include" />
             <e p="turretProjectile.cs" t="Include" />
           </e>
           <e p="FallGuard.cs" t="Include" />
@@ -21,6 +22,8 @@
             <e p="GenerateMap.cs" t="Include" />
             <e p="PowerupManager.cs" t="Include" />
           </e>
+          <e p="MenuButtons.cs" t="Include" />
+          <e p="menuCameraShake.cs" t="Include" />
           <e p="PlayerHealth.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
