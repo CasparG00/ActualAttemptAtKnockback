@@ -7,6 +7,8 @@ public class MenuCameraShake : MonoBehaviour
 {
     public CameraShakeEvent data;
 
+    public int health = 10;
+    
     [Header("Flinch Settings")]
     [Range(0, 1)]
     public float targetVignetteValue = 0.31f;
@@ -33,6 +35,12 @@ public class MenuCameraShake : MonoBehaviour
         if (other.transform.CompareTag("Projectile"))
         {
             _st.AddShakeEvent(data);
+            health--;
+
+            if (health <= 0)
+            {
+                Application.Quit();
+            }
         }
 
         var currentVignetteValue = _vg.intensity.value;

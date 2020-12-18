@@ -7,13 +7,16 @@ public class Powerups : MonoBehaviour
     public Type powerupType;
     
     private PlayerStats _ps;
+    private Shooting _s;
 
     [Header("Visual Settings")] 
     public float rotationSpeed = 5f;
 
     private void Start()
     {
-        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        var player = GameObject.FindGameObjectWithTag("Player");
+        _ps = player.GetComponent<PlayerStats>();
+        _s = player.GetComponent<Shooting>();
     }
 
     private void Update()
@@ -49,6 +52,22 @@ public class Powerups : MonoBehaviour
                     Destroy(gameObject);
                 }
                 break;
+            case Type.SecondChance:
+                if (!_ps.hasSecondChance)
+                {
+                    _ps.hasSecondChance = true;
+                    print("Given Second Chance");
+                    Destroy(gameObject);
+                }
+                break;
+            case Type.Overcharge:
+                if (!_ps.hasOvercharge)
+                {
+                    _s.StartCoroutine(_s.Overcharge());
+                    print("Given Overcharge");
+                    Destroy(gameObject);
+                }
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -65,6 +84,8 @@ public class Powerups : MonoBehaviour
     public enum Type
     {
         FallProtection,
-        Heal
+        Heal,
+        SecondChance,
+        Overcharge
     }
 }

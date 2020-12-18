@@ -57,6 +57,7 @@ public class EnemySpawningManager : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerStats.IsDead) return;
         CurrGeneratorsOn();
         
         _currentTurretTime += Time.deltaTime;

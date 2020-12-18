@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera Settings")] public Transform cam;
     public float sensitivity;
 
+    [Header("Death Transition Settings")] 
+    public Transform deathCamPosition;
+    public float transitionSpeed = 2f;
+    
     public bool lockCursor;
 
     private Rigidbody _rb;
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerStats.IsDead || Pause.IsPaused) return;
         CheckGround();
         MyInput();
         EdgeDetection();
@@ -54,12 +59,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PlayerStats.IsDead || Pause.IsPaused) return;
         Movement();
     }
 
     private void LateUpdate()
     {
-        Look();
+        if (!PlayerStats.IsDead)
+        {
+            if (!Pause.IsPaused)
+            {
+                Look();   
+            }
+        }
+        else
+        {
+            DeathCamTransition();
+        }
     }
 
     private void MyInput()
@@ -150,7 +166,13 @@ public class PlayerMovement : MonoBehaviour
         _cameraX -= mouseY;
         _cameraX = Mathf.Clamp(_cameraX, -90f, 90f);
 
-        cam.transform.localRotation = Quaternion.Euler(_cameraX, _cameraY, 0);
+        cam.localRotation = Quaternion.Euler(_cameraX, _cameraY, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, _cameraY, 0);
+    }
+
+    private void DeathCamTransition()
+    {
+        cam.position = Vector3.Slerp(cam.position, deathCamPosition.position, Time.deltaTime * transitionSpeed);
+        cam.rotation = Quaternion.Slerp(cam.rotation, deathCamPosition.rotation, Time.deltaTime * transitionSpeed);
     }
 }

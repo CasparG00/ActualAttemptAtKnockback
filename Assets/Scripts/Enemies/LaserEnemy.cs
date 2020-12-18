@@ -2,6 +2,8 @@
 
 public class LaserEnemy : MonoBehaviour
 {
+    public State state = State.Game;
+    
     public float length = 10f;
     public float speed = 5f;
 
@@ -14,19 +16,37 @@ public class LaserEnemy : MonoBehaviour
     
     private void Start()
     {
-        _lr = GetComponent<LineRenderer>();
-        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        switch (state)
+        {
+            case State.Game:
+                _lr = GetComponent<LineRenderer>();
+                _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         
-        _tf = transform;
+                _tf = transform;
+                break;
+            case State.Menu:
+                _lr = GetComponent<LineRenderer>();
+
+                _tf = transform;
+                break;
+        }
     }
 
 
     private void Update()
     {
-        Destroy(gameObject, lifetime);
-        Move();
-        UpdateSprite();
-        Shoot();
+        switch (state)
+        {
+            case State.Game:
+                Destroy(gameObject, lifetime);
+                Move();
+                UpdateSprite();
+                Shoot();
+                break;
+            case State.Menu:
+                UpdateSprite();
+                break;
+        }
     }
 
     private void Shoot()
@@ -34,7 +54,11 @@ public class LaserEnemy : MonoBehaviour
         if (!Physics.Raycast(_origin, _tf.right, out var hit, length)) return;
         if (hit.transform.CompareTag("Player"))
         {
-            _ps.Damage(1);
+            _ps.Damage(3);
+        }
+        if (hit.transform.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -53,5 +77,11 @@ public class LaserEnemy : MonoBehaviour
         
         _lr.SetPosition(0, _origin);
         _lr.SetPosition(1, _end);
+    }
+    
+    public enum State
+    {
+        Game,
+        Menu
     }
 }

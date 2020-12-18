@@ -8,12 +8,16 @@ public class Shooting : MonoBehaviour
     public float knockbackStrength = 10;
     public float fireRate = 1;
 
+    [HideInInspector] 
+    public float currentFireRate;
+
     [Space]
     public Transform cam;
     public LayerMask layers;
     public EnemySpawningManager esm;
 
     private Rigidbody _rb;
+    private PlayerStats _ps;
     private float _timer;
     private bool _canShoot = true;
 
@@ -45,14 +49,18 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _ps = GetComponent<PlayerStats>();
 
         _coolDownBarSlider = cooldownBar.GetComponent<Slider>();
         _cooldownBarGroup = cooldownBar.GetComponent<CanvasGroup>();
         _cooldownBarGroup.alpha = 0;
+
+        currentFireRate = fireRate;
     }
 
     private void Update()
     {
+        if (PlayerStats.IsDead || Pause.IsPaused) return;
         ShootWeapon();
         UpdateUI();
         ShotDelay();
@@ -66,32 +74,47 @@ public class Shooting : MonoBehaviour
         StartCoroutine(FadeUI(_cooldownBarGroup.alpha, _canShoot ? 1 : 0));
         _canShoot = false;
 
-        for (var i = 0; i < pelletCount; i++) {
+        for (var i = 0; i < pelletCount; i++)
+        {
             var direction = cam.forward;
             var spread = Vector3.zero;
             
             spread += cam.up * Random.Range(-1f, 1f);
             spread += cam.right * Random.Range(-1f, 1f);
-            
+
             direction += spread.normalized * Random.Range(0f, pelletSpread);
-            
+
             if (!Physics.Raycast(transform.position, direction, out var hit, maxRange, layers)) continue;
-            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Projectile"))
+            var hitTag = hit.transform.tag;
+
+            switch (hitTag)
             {
-                Destroy(hit.transform.gameObject);
-                esm.FreeSpawner(hit);
+                case "Enemy":
+                    Destroy(hit.transform.gameObject);
+                    esm.FreeSpawner(hit);
+                    PlayerStats.Score += GameStats.TurretPoints;
+                    break;
+
+                case "Projectile":
+                    Destroy(hit.transform.gameObject);
+                    PlayerStats.Score += GameStats.ProjectilePoints;
+                    break;
+
+                case "Generator":
+                    var lg = hit.transform.GetComponent<LaserGenerator>();
+                    if (lg.isOn)
+                    {
+                        PlayerStats.Score += GameStats.GeneratorPoints;
+                        lg.StartCoroutine(lg.Reset());
+                    }
+
+                    break;
             }
 
-            if (hit.transform.CompareTag("Generator"))
-            {
-                var lg = hit.transform.GetComponent<LaserGenerator>();
-                if (lg.isOn)
-                {
-                    lg.StartCoroutine(lg.Reset());
-                }
-            }
+            if (hitTag == "Ground") continue;
+            break;
         }
-        
+
         var localPos = weapon.localPosition;
         var targetPos = new Vector3(0, weaponKnockbackAnimationStrength * 0.2f, -weaponKnockbackAnimationStrength);
         
@@ -107,7 +130,7 @@ public class Shooting : MonoBehaviour
             _timer += Time.deltaTime;
         }
 
-        if (!(_timer >= fireRate)) return;
+        if (!(_timer >= currentFireRate)) return;
         StartCoroutine(FadeUI(_cooldownBarGroup.alpha, _canShoot ? 1 : 0));
         _canShoot = true;
         _timer = 0;
@@ -115,7 +138,7 @@ public class Shooting : MonoBehaviour
 
     private void UpdateUI()
     {
-        _coolDownBarSlider.value = (fireRate - _timer) / fireRate;
+        _coolDownBarSlider.value = (currentFireRate - _timer) / currentFireRate;
     }
 
     private IEnumerator FadeUI(float start, float end)
@@ -144,5 +167,16 @@ public class Shooting : MonoBehaviour
     
             yield return null;
         }
+    }
+
+    public IEnumerator Overcharge()
+    {
+        currentFireRate = _ps.overchargeFireRate;
+        _ps.hasOvercharge = true;
+        
+        yield return new WaitForSeconds(_ps.overchargeDuration);
+
+        currentFireRate = fireRate;
+        _ps.hasOvercharge = false;
     }
 }
