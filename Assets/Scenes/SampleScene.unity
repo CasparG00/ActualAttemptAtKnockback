@@ -12747,8 +12747,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "MOVEMENT:\t\t\tWASD\nSHOOT:\t\t\t\tLEFT CLICK\nLEDGE GRAB:         SPACE\nPAUSE:          
-    \t\t  ESCAPE"
+  m_Text: "MOVEMENT:  WASD\nSHOOT:\t  LEFT CLICK\nLEDGE GRAB:  SPACE\nPAUSE:  ESCAPE"
 --- !u!222 &2104998265
 CanvasRenderer:
   m_ObjectHideFlags: 0
