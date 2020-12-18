@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Though a generator can't attack directly, they can spawn lasers in front
     of the player! \n\nOnce shot the generator shuts down, however, the generator
-    can reboot if there are other generators around! \n\nIf you manage to shut down
+    can reboot if other generators are still active! \n\nIf you manage to shut down
     every generator they will all be destroyed!"
 --- !u!222 &633237966
 CanvasRenderer:
@@ -3503,7 +3503,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 10
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1293500670
 Canvas:
   m_ObjectHideFlags: 0
