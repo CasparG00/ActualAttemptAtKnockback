@@ -8,10 +8,8 @@ public class MenuButtons : MonoBehaviour
     [HideInInspector] public Menu menu;
     private bool _hasFocussed;
 
-    [Header("Link Settings")]
-    public Text twitterLink;
-    public Color normalColor;
-    public Color highlightedColor;
+    public GameObject mainMenuWrapper;
+    public GameObject optionsMenuWrapper;
 
     public Button[] buttons;
 
@@ -47,15 +45,6 @@ public class MenuButtons : MonoBehaviour
         }
     }
 
-    public void SubtitleHighlighted()
-    {
-        twitterLink.text = "By <color="+highlightedColor+">" + "Caspar Gelderman"+ "</color>";
-    }
-    public void SubtitleNormal()
-    {
-        twitterLink.text = $"By <color={normalColor}>" + "Caspar Gelderman"+ "</color>";
-    }
-
     public void TwitterLink()
     {
         Application.OpenURL("https://twitter.com/CasparG00");
@@ -78,6 +67,18 @@ public class MenuButtons : MonoBehaviour
         foreach (var button in buttons)
         {
             button.interactable = _hasFocussed;
+        }
+
+        switch (menu)
+        {
+            case Menu.MainMenu:
+                mainMenuWrapper.SetActive(true);
+                optionsMenuWrapper.SetActive(false);
+                break;
+            case Menu.Options:
+                mainMenuWrapper.SetActive(false);
+                optionsMenuWrapper.SetActive(true);
+                break;
         }
     }
 
