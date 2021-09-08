@@ -15,11 +15,13 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerStats.IsDead) return;
         transform.position = player.transform.position;
     }
 
     private void LateUpdate()
     {
+        if (PlayerStats.IsDead) return;
         Shake();
     }
 

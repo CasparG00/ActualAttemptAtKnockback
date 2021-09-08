@@ -11,6 +11,12 @@ public class PowerupManager : MonoBehaviour
 
     private float _currentTime;
 
+    [Header("UI Settings")] 
+    public PlayerStats ps;
+    public GameObject fallProtectionUI;
+    public GameObject secondChanceUI;
+    public GameObject overchargeUI;
+
     private void Start()
     {
         GetData();
@@ -25,6 +31,8 @@ public class PowerupManager : MonoBehaviour
             SpawnPowerup();
             _currentTime = 0;
         }
+
+        UpdateUI();
     }
 
     private void GetData()
@@ -37,8 +45,7 @@ public class PowerupManager : MonoBehaviour
             var spawnPos = spawner.transform.position;
             var data = new SpawnerData()
             {
-                Pos = spawnPos,
-                Occupied = false
+                Pos = spawnPos
             };
             
             //Destroy the Game Objects associated with the Spawner Data to clean up
@@ -48,23 +55,24 @@ public class PowerupManager : MonoBehaviour
     }
 
     //Spawn a random Powerup at a random Unoccupied Position.
-    public void SpawnPowerup()
+    private void SpawnPowerup()
     {
         var spawner = _spawnerData[Random.Range(0, _spawnerData.Count)];
-        
-        if (!spawner.Occupied)
-        {
-            var powerup = powerups[Random.Range(0, powerups.Length)];
-            
-            Instantiate(powerup, spawner.Pos, Quaternion.identity);
-            spawner.Occupied = true;
-        }
+        var powerup = powerups[Random.Range(0, powerups.Length)];
+
+        Instantiate(powerup, spawner.Pos, Quaternion.identity);
         print("spawned powerup!");
     }
-    
+
+    private void UpdateUI()
+    {
+        fallProtectionUI.SetActive(ps.hasFallProtection);
+        secondChanceUI.SetActive(ps.hasSecondChance);
+        overchargeUI.SetActive(ps.hasOvercharge);
+    }
+
     private class SpawnerData
     {
         public Vector3 Pos { get; set; }
-        public bool Occupied { get; set; }
     }
 }

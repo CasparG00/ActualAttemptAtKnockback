@@ -27,6 +27,8 @@ public class LaserGenerator : MonoBehaviour
     {
         if (_esm.currGeneratorsOn > 0) return;
         StopCoroutine(Reset());
+        PlayerStats.Score += GameStats.AllGeneratorPoints;
+        _esm.currGeneratorsSpawned = 0;
         Destroy(gameObject);
     }
 

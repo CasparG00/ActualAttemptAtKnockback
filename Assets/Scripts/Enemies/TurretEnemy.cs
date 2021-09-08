@@ -4,6 +4,8 @@ using UnityEngine;
 public class TurretEnemy : MonoBehaviour
 {
     public State state = State.Game;
+
+    [HideInInspector] public MenuState menuState = MenuState.Active;
     
     public Transform turret;
     private Transform _tf;
@@ -60,8 +62,16 @@ public class TurretEnemy : MonoBehaviour
 
                 break;
             case State.Menu:
-                Animate();
-                MenuShoot();
+                switch (menuState)
+                {
+                    case MenuState.Active:
+                        Animate();
+                        MenuShoot();
+                        break;
+                    case MenuState.Inactive:
+                        break;
+                }
+
                 break;
         }
     }
@@ -119,11 +129,14 @@ public class TurretEnemy : MonoBehaviour
     private void UpdateRotation()
     {
         var playerPos = _player.position;
-        
-        _tf.LookAt(playerPos, Vector3.up);
 
+        var relativePos = playerPos - transform.position;
+        var toRotation = Quaternion.LookRotation(relativePos);
+        _tf.rotation = Quaternion.Lerp( transform.rotation, toRotation, 10 * Time.deltaTime);
+        
         var angles = _tf.eulerAngles;
         _tf.eulerAngles = new Vector3(0, angles.y, 0);
+        
         turret.LookAt(playerPos, Vector3.up);
     }
     
@@ -189,5 +202,11 @@ public class TurretEnemy : MonoBehaviour
     {
         Game,
         Menu
+    }
+
+    public enum MenuState
+    {
+        Active,
+        Inactive
     }
 }
