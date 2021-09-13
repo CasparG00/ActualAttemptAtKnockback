@@ -20,70 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14cf3b4e-71a9-4b4c-b122-85e7807a5cff" name="Default Changelist" comment="plassersap">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Powerups/OverchargePowerup.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Powerups/OverchargePowerup.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Powerups/SecondChancePowerup.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Powerups/SecondChancePowerup.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ControlHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ControlHelper.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DeathBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DeathBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/GameStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/MenuManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/MenuManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/Pause.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/Pause.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ActualAttemptAtKnockback/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Environment.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Environment.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/GeneratorOff.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/GeneratorOff.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/GeneratorOn.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/GeneratorOn.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Laser.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Laser.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Projectile.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Projectile.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Turret.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Turret.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/TurretWeapon.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/TurretWeapon.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Weapon.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Weapon.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RenderPipelineAsset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RenderPipelineAsset_Renderer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/PlayerCam Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/PlayerCam Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/LaserEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/LaserEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/LaserGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/LaserGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/TurretEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/TurretEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManagers/EnemySpawningManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/EnemySpawningManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManagers/PowerupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManagers/PowerupManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuButtons.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuButtons.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerStats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerups.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shooting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/menuCameraShake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/menuCameraShake.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Particles/SpeedParticle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Particles/SpeedParticle.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Particles/explosion.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Particles/explosion.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Blue3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Brown.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Brown.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Cyan.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Cyan.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Green1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Green1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Green2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Green2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey4.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Grey4.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Orange.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Orange.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Purple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Purple.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Red.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_White.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thirdparty/Gridbox Prototype Materials/Resources/Materials/Prototype Grid/Prototype_512x512_Yellow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,6 +212,7 @@
       <workItem from="1608147811925" duration="2031000" />
       <workItem from="1608196909021" duration="4864000" />
       <workItem from="1608211750226" duration="2802000" />
+      <workItem from="1608297073217" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="cock">
       <created>1602855003427</created>
